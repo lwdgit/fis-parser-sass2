@@ -13,5 +13,18 @@
   },
   "dependencies": {
     "node-sass": ">=3.1.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lwdgit/fis-parser-scss.git"
+  },
+  "author": "liwen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lwdgit/fis-parser-scss/issues"
   }
 }
