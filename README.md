@@ -1,5 +1,5 @@
 # fis-parser-sass2
-A parser plugin for fis to compile sass file.
+A parser plugin for fis to compile sass file.（基于node-sass的fis插件，支持expanded,及预定义变量。本插件基于fis官方修改，不过依赖库由```fis-sass```更改为```node-sass```）
 
 ## install
 
@@ -22,5 +22,6 @@ fis.config.set('settings.parser.sass2.sourceMap', false);
 fis.config.set('roadmap.ext.scss', 'css');
 
 ```
+
     $ fis release -d ./output
 
