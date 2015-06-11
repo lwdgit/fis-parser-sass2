@@ -1,9 +1,9 @@
-# fis-parser-nsass
+# fis-parser-sass2
 A parser plugin for fis to compile sass file.
 
 ## install
 
-    $ npm install -g fis-parser-nsass
+    $ npm install -g fis-parser-sass2
 
 ```javascript
 //fis-conf.js
