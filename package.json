@@ -19,7 +19,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lwdgit/fis-parser-scss.git"
+    "url": "git+https://github.com/lwdgit/fis-parser-sass2.git"
   },
   "author": "liwen",
   "license": "MIT",
