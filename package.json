@@ -1,8 +1,7 @@
 {
-  "name": "fis-parser-scss",
-  "description": "A parser plugin for fis to compile scss file.",
+  "name": "fis-parser-sass2",
+  "description": "A parser plugin for fis to compile sass file.",
   "version": "0.0.1",
-  "homepage": "http://fis.baidu.com/",
   "keywords": [
     "fis",
     "sass"
@@ -25,6 +24,6 @@
   "author": "liwen",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/lwdgit/fis-parser-scss/issues"
+    "url": "https://github.com/lwdgit/fis-parser-sass2/issues"
   }
 }
