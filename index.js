@@ -217,7 +217,7 @@ module.exports = function(content, file, conf){
         file.extras.derived.push(mapping);
     }
 
-    return ret.css;
+    return ret.css.toString();
 };
 
 module.exports.defaultOptions = {
