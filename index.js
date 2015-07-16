@@ -34,7 +34,7 @@ function resolve_and_load(filename, dir) {
     files.every(function(url) {
         var info = fis.uri(url, dir);
 
-        if( info.file && info.file.isFile() ) {
+        if (info.file && info.file.isFile()) {
             found = info.file;
             return false;
         }
@@ -66,7 +66,11 @@ function fixSourcePath(content, file) {
     // 处理，解决资源引用路径问题。
     content = fis.compile.extCss(content);
 
-    return content.replace(fis.compile.lang.reg, function(all, type, value) {
+    return content.replace(fis.compile.lang.reg, function(all, type, depth, value) {
+
+        if (parseFloat(fis.version, 10) < 3.0) {
+            value = depth;
+        }
 
         var info = fis.uri(value, file.dirname);
 
@@ -107,7 +111,7 @@ function handlerDefine(conf) {
     return ret;
 }
 
-module.exports = function(content, file, conf){
+module.exports = function(content, file, conf) {
 
     if (!content || !content.trim()) {
         return content;
@@ -127,9 +131,9 @@ module.exports = function(content, file, conf){
     file.dirname !== root && opts.includePaths.unshift(file.dirname);
     opts.includePaths.push(root);
 
-    opts.includePaths = opts.includePaths.map(function( dir ) {
+    opts.includePaths = opts.includePaths.map(function(dir) {
 
-        if (path.resolve( dir ) != path.normalize( dir )) {
+        if (path.resolve(dir) != path.normalize(dir)) {
             dir = path.join(root, dir);
         }
 
@@ -180,8 +184,8 @@ module.exports = function(content, file, conf){
         mapping.useDomain = true;
         mapping.useHash = false;
 
-        opts.sourceMap = mapping.getUrl(fis.compile.settings.hash, fis.compile.settings.domain);
-        file.release && (opts.outFile = file.getUrl(fis.compile.settings.hash, fis.compile.settings.domain));
+        opts.sourceMap = mapping.getUrl(fis.compile.settings.hash,  fis.compile.settings.domain);
+        file.release && (opts.outFile = file.getUrl(fis.compile.settings.hash,  fis.compile.settings.domain));
     }
 
     var ret;
