@@ -7,7 +7,7 @@
 /.tmp
 /debug
 /binary
-
+/vendor
 .DS_Store
 
 *.db
