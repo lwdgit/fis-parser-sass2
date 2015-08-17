@@ -6,6 +6,7 @@
 /test
 /.tmp
 /debug
+/binary
 
 .DS_Store
 
