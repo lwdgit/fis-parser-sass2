@@ -1,0 +1,99 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'D:\\node\\\\node.exe',
+1 verbose cli   'D:\\node\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'publish' ]
+2 info using npm@2.11.1
+3 info using node@v0.12.4
+4 verbose publish [ '.' ]
+5 silly cache add args [ '.', null ]
+6 verbose cache add spec .
+7 silly cache add parsed spec { raw: '.',
+7 silly cache add   scope: null,
+7 silly cache add   name: null,
+7 silly cache add   rawSpec: '.',
+7 silly cache add   spec: 'D:\\fis-parser-sass2',
+7 silly cache add   type: 'directory' }
+8 verbose addLocalDirectory C:\Documents and Settings\Administrator\Application Data\npm-cache\fis-parser-sass2\1.1.1\package.tgz not in flight; packing
+9 verbose tar pack [ 'C:\\Documents and Settings\\Administrator\\Application Data\\npm-cache\\fis-parser-sass2\\1.1.1\\package.tgz',
+9 verbose tar pack   'D:\\fis-parser-sass2' ]
+10 verbose tarball C:\Documents and Settings\Administrator\Application Data\npm-cache\fis-parser-sass2\1.1.1\package.tgz
+11 verbose folder D:\fis-parser-sass2
+12 info prepublish fis-parser-sass2@1.1.1
+13 verbose addLocalTarball adding from inside cache C:\Documents and Settings\Administrator\Application Data\npm-cache\fis-parser-sass2\1.1.1\package.tgz
+14 silly cache afterAdd fis-parser-sass2@1.1.1
+15 verbose afterAdd C:\Documents and Settings\Administrator\Application Data\npm-cache\fis-parser-sass2\1.1.1\package\package.json not in flight; writing
+16 verbose afterAdd C:\Documents and Settings\Administrator\Application Data\npm-cache\fis-parser-sass2\1.1.1\package\package.json written
+17 silly publish { name: 'fis-parser-sass2',
+17 silly publish   description: 'A parser plugin for fis to compile sass file.',
+17 silly publish   version: '1.1.1',
+17 silly publish   keywords: [ 'fis', 'sass' ],
+17 silly publish   main: 'index.js',
+17 silly publish   engines: { node: '>=0.10.0' },
+17 silly publish   dependencies: {},
+17 silly publish   devDependencies: {},
+17 silly publish   scripts:
+17 silly publish    { preinstall: 'node scripts/download.js',
+17 silly publish      test: 'node test/test.js' },
+17 silly publish   repository:
+17 silly publish    { type: 'git',
+17 silly publish      url: 'git+https://github.com/lwdgit/fis-parser-sass2.git' },
+17 silly publish   author: { name: 'liwen' },
+17 silly publish   license: 'MIT',
+17 silly publish   bugs: { url: 'https://github.com/lwdgit/fis-parser-sass2/issues' },
+17 silly publish   homepage: 'https://github.com/lwdgit/fis-parser-sass2#readme',
+17 silly publish   readme: '# fis-parser-sass2 ![NPM version](https://badge.fury.io/js/fis-parser-sass2.png)\n\n[![NPM Download](https://nodei.co/npm-dl/fis-parser-sass2.png?months=1)](https://www.npmjs.org/package/fis-parser-sass2)\n\nA parser plugin for fis to compile sass file.\n\n（基于node-sass的fis插件，支持expanded,及预定义变量。本插件基于fis官方插件修改，不过依赖库由```fis-sass```更改为```node-sass```）\n\n## install\n\n    $ npm install -g fis-parser-sass2\n\n```javascript\n//fis-conf.js\n\nfis.config.set(\'modules.parser.scss\', \'sass2\');\nfis.config.set(\'settings.parser.sass2.define\', {enable: true, color: \'#000\'});\n//you can add your settings to control the varible in the sass file\n//你可以通过设置该属性来控制sass文件里的的变量\n\nfis.config.set(\'settings.parser.sass2.outputStyle\', \'expanded\');\n//the default is expanded，默认为expanded,你可以手动设置其他属性\n\nfis.config.set(\'settings.parser.sass2.sourceMap\', false);\n//use sourcemap or not, default is true，是否启用sourceMap,默认为开启\n\nfis.config.set(\'roadmap.ext.scss\', \'css\');\n\n```\n\n```javascript\n//fis3-conf.js\nfis.match(\'**.scss\', {\n    rExt: \'.css\', // from .scss to .css\n    parser: fis.plugin(\'sass2\');\n}\n\n```\n\n    $ fis release -d ./output\n\n',
+17 silly publish   readmeFilename: 'README.md',
+17 silly publish   gitHead: '2bea3ac0575799837f86ca1286beb03ddca7f496',
+17 silly publish   _id: 'fis-parser-sass2@1.1.1',
+17 silly publish   _shasum: 'eb44a719143ce257e55809a803507f681afcaeb2',
+17 silly publish   _from: '.' }
+18 verbose getPublishConfig undefined
+19 silly mapToRegistry name fis-parser-sass2
+20 silly mapToRegistry using default registry
+21 silly mapToRegistry registry https://registry.npmjs.org/
+22 silly mapToRegistry uri https://registry.npmjs.org/fis-parser-sass2
+23 verbose publish registryBase https://registry.npmjs.org/
+24 silly publish uploading C:\Documents and Settings\Administrator\Application Data\npm-cache\fis-parser-sass2\1.1.1\package.tgz
+25 verbose request uri https://registry.npmjs.org/fis-parser-sass2
+26 verbose request sending authorization for write operation
+27 info attempt registry request try #1 at 20:14:35
+28 verbose request using bearer token for auth
+29 verbose request id 66afb5066e2234d8
+30 http request PUT https://registry.npmjs.org/fis-parser-sass2
+31 http 403 https://registry.npmjs.org/fis-parser-sass2
+32 verbose headers { 'content-type': 'application/json',
+32 verbose headers   'cache-control': 'max-age=60',
+32 verbose headers   'content-length': '95',
+32 verbose headers   'accept-ranges': 'bytes',
+32 verbose headers   date: 'Tue, 18 Aug 2015 12:14:29 GMT',
+32 verbose headers   via: '1.1 varnish',
+32 verbose headers   connection: 'keep-alive',
+32 verbose headers   'x-served-by': 'cache-hkg6820-HKG',
+32 verbose headers   'x-cache': 'MISS',
+32 verbose headers   'x-cache-hits': '0',
+32 verbose headers   'x-timer': 'S1439900067.886449,VS0,VE1578' }
+33 verbose request invalidating C:\Documents and Settings\Administrator\Application Data\npm-cache\registry.npmjs.org\fis-parser-sass2 on PUT
+34 error publish Failed PUT 403
+35 verbose stack Error: "You cannot publish over the previously published version 1.1.1." : fis-parser-sass2
+35 verbose stack     at CachingRegistryClient.<anonymous> (D:\node\node_modules\npm\node_modules\npm-registry-client\lib\request.js:247:14)
+35 verbose stack     at Request._callback (D:\node\node_modules\npm\node_modules\npm-registry-client\lib\request.js:170:14)
+35 verbose stack     at Request.self.callback (D:\node\node_modules\npm\node_modules\request\request.js:354:22)
+35 verbose stack     at Request.emit (events.js:110:17)
+35 verbose stack     at Request.<anonymous> (D:\node\node_modules\npm\node_modules\request\request.js:1207:14)
+35 verbose stack     at Request.emit (events.js:129:20)
+35 verbose stack     at IncomingMessage.<anonymous> (D:\node\node_modules\npm\node_modules\request\request.js:1153:12)
+35 verbose stack     at IncomingMessage.emit (events.js:129:20)
+35 verbose stack     at _stream_readable.js:908:16
+35 verbose stack     at process._tickCallback (node.js:355:11)
+36 verbose statusCode 403
+37 verbose pkgid fis-parser-sass2
+38 verbose cwd D:\fis-parser-sass2
+39 error Windows_NT 5.1.2600
+40 error argv "D:\\node\\\\node.exe" "D:\\node\\node_modules\\npm\\bin\\npm-cli.js" "publish"
+41 error node v0.12.4
+42 error npm  v2.11.1
+43 error code E403
+44 error "You cannot publish over the previously published version 1.1.1." : fis-parser-sass2
+45 error If you need help, you may report this error at:
+45 error     <https://github.com/npm/npm/issues>
+46 verbose exit [ 1, true ]
