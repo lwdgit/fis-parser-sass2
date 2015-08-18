@@ -1,7 +1,7 @@
 {
   "name": "fis-parser-sass2",
   "description": "A parser plugin for fis to compile sass file.",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "keywords": [
     "fis",
     "sass"
@@ -11,11 +11,12 @@
     "node": ">=0.10.0"
   },
   "dependencies": {
-    "node-sass": ">=3.2.0"
+    
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "preinstall": "node scripts/download.js",
+    "test": "node test/test.js"
   },
   "repository": {
     "type": "git",

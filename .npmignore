@@ -2,7 +2,6 @@
 /.settings
 /.project
 /.gitignore
-/node_modules
 /test
 /.tmp
 /debug
