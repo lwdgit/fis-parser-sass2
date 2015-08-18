@@ -8,6 +8,7 @@
 /binary
 /vendor
 .DS_Store
+/.git
 
 *.db
 *.bak
