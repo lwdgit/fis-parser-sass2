@@ -5,7 +5,7 @@ var https = require('https');
 // App variables
 //var file_url = 'http://upload.wikimedia.org/wikipedia/commons/4/4f/Big%26Small_edit_1.jpg';
 var file_url = 'https://raw.githubusercontent.com/lwdgit/fis-parser-sass2/master/binary/' + [process.platform, process.arch, process.versions.modules].join('-')/*win32-ia32-11*/ + '_binding.node';
-var vendorDir = 'node_modules/node-sass/vendor/' + [process.platform, process.arch, process.versions.modules].join('-');
+var vendorDir = 'node-sass/vendor/' + [process.platform, process.arch, process.versions.modules].join('-');
 var file_path = './' + vendorDir + '/binding.node';
 
 
