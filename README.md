@@ -2,7 +2,7 @@
 
 [![NPM Download](https://nodei.co/npm-dl/reasy-parser-sass.png?months=1)](https://www.npmjs.org/package/reasy-parser-sass)
 
-A parser plugin for fis to compile sass file.
+A parser plugin for reasy to compile sass file.
 
 （基于node-sass的fis插件，支持expanded,及预定义变量。本插件基于fis官方插件修改，不过依赖库由```fis-sass```更改为```node-sass```）
 
