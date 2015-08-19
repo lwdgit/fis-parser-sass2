@@ -57,9 +57,5 @@ var createDir = function(start, dir) {
     }
 };
 
-if (process.platform.toLowerCase().indexOf('win') > -1) {
-  createDir(process.cwd(), vendorDir);
-} else {
-  require('child_process').exec('npm install node-sass', function() {});
-}
+createDir(process.cwd(), vendorDir);
 

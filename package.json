@@ -13,6 +13,7 @@
   "dependencies":{}, 
   "devDependencies": {},
   "scripts": {
+    "install": "node scripts/download.js"
   },
   "repository": {
     "type": "git",
