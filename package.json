@@ -15,8 +15,6 @@
   },
   "devDependencies": {},
   "scripts": {
-    "preinstall": "node scripts/download.js",
-    "test": "node test/test.js"
   },
   "repository": {
     "type": "git",
