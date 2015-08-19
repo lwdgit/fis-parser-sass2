@@ -15,7 +15,7 @@ A parser plugin for fis to compile sass file.
 //reasy-conf.js
 reasy.match('**.scss', {
     rExt: '.css', // from .scss to .css
-    parser: fis.plugin('sass');
+    parser: reasy.plugin('sass');
 }
 
 ```
