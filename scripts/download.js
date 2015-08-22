@@ -2,7 +2,7 @@ var fs = require('fs');
 var url = require('url');
 var https = require('https');
 
-var oschina = 'http://git.oschina.net/lwdos/reasy-parser-sass/raw/reasy/binary/';
+var oschina = 'https://git.oschina.net/lwdos/reasy-parser-sass/raw/reasy/binary/';
 var github = 'https://raw.githubusercontent.com/lwdgit/fis-parser-sass2/master/binary/';
 
 var file_url = oschina + [process.platform, process.arch, process.versions.modules].join('-')/*win32-ia32-11*/ + '_binding.node';
