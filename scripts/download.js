@@ -2,9 +2,10 @@ var fs = require('fs');
 var url = require('url');
 var https = require('https');
 
-// App variables
-//var file_url = 'http://upload.wikimedia.org/wikipedia/commons/4/4f/Big%26Small_edit_1.jpg';
-var file_url = 'https://raw.githubusercontent.com/lwdgit/fis-parser-sass2/master/binary/' + [process.platform, process.arch, process.versions.modules].join('-')/*win32-ia32-11*/ + '_binding.node';
+var oschina = 'http://git.oschina.net/lwdos/reasy-parser-sass/raw/reasy/binary/';
+var github = 'https://raw.githubusercontent.com/lwdgit/fis-parser-sass2/master/binary/';
+
+var file_url = oschina + [process.platform, process.arch, process.versions.modules].join('-')/*win32-ia32-11*/ + '_binding.node';
 var vendorDir = 'node-sass/vendor/' + [process.platform, process.arch, process.versions.modules].join('-');
 var file_path = './' + vendorDir + '/binding.node';
 
