@@ -26,7 +26,12 @@ var downloadFile = function(file_url, file_path) {
         res.on('data', function(chunk) {
             body += chunk;
             cur += chunk.length;
-            info = 'Downloading ' + (100.0 * cur / len).toFixed(2) + '% ' + (cur / 1048576).toFixed(2) + ' mb\\' + 'Total size: ' + total.toFixed(2) + ' mb';
+            if (total) {
+                info = '  Downloading ' + (100.0 * cur / len).toFixed(2) + '% ' + (cur / 1048576).toFixed(2) + ' Mb/' + 'Total size: ' + total.toFixed(2) + ' Mb';
+            } else {
+                info = '  Downloading ' + (cur / 1048576).toFixed(2) + ' Mb';
+            }
+
 
             process.stdout.clearLine();  // clear current text
             process.stdout.cursorTo(0);
