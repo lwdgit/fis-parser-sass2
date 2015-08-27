@@ -13,7 +13,8 @@
   "dependencies":{}, 
   "devDependencies": {},
   "scripts": {
-    "install": "node scripts/download.js"
+    "install": "node scripts/download.js",
+    "postintall": "node test/test.js"
   },
   "repository": {
     "type": "git",
