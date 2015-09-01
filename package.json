@@ -1,7 +1,7 @@
 {
   "name": "reasy-parser-sass",
   "description": "A parser plugin for reasy to compile sass file.",
-  "version": "1.1.7",
+  "version": "1.1.8",
   "keywords": [
     "fis",
     "sass"
@@ -13,8 +13,8 @@
   "dependencies":{}, 
   "devDependencies": {},
   "scripts": {
-    "install": "node scripts/download.js",
-    "postinstall": "node test/test.js"
+    "preinstall": "node scripts/download.js",
+    "test": "node test/test.js"
   },
   "repository": {
     "type": "git",
