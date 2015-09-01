@@ -15,7 +15,7 @@ A parser plugin for reasy to compile sass file.
 //reasy-conf.js
 reasy.match('**.scss', {
     rExt: '.css', // from .scss to .css
-    parser: reasy.plugin('sass');
+    parser: reasy.plugin('sass')
 }
 
 ```
