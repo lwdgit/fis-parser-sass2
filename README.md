@@ -32,7 +32,7 @@ fis.config.set('roadmap.ext.scss', 'css');
 //fis3-conf.js
 fis.match('**.scss', {
     rExt: '.css', // from .scss to .css
-    parser: fis.plugin('sass2');
+    parser: fis.plugin('sass2')
 }
 
 ```
