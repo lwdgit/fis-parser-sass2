@@ -145,37 +145,37 @@ module.exports = function(content, file, conf) {
 
     var includePaths = opts.includePaths;
     var sources = [file.subpath];
-    // opts.importer = function(url, prev, done) {
-    //     var localPaths = includePaths.concat();
-    //     var prevFile = find(prev, includePaths);
+    opts.importer = function(url, prev, done) {
+        var localPaths = includePaths.concat();
+        var prevFile = find(prev, includePaths);
 
-    //     if (prevFile) {
-    //         localPaths.unshift(prevFile.dirname);
-    //     }
+        if (prevFile) {
+            localPaths.unshift(prevFile.dirname);
+        }
 
-    //     var target = find(url, localPaths);
+        var target = find(url, localPaths);
 
-    //     if (!target) {
-    //         throw new Error('Can\'t find `' + url +'` in `' + prev + '`');
-    //     }
+        if (!target) {
+            throw new Error('Can\'t find `' + url +'` in `' + prev + '`');
+        }
 
-    //     var content = target.getContent();
-    //     content = fixSourcePath(content, target);
+        var content = target.getContent();
+        content = fixSourcePath(content, target);
 
-    //     if (file.cache) {
-    //         file.cache.addDeps(target.realpath);
-    //     }
-    //     //解决include_path 内import导致subpath为空报错问题
-    //     if(!target.subpath){
-    //         target.subpath = path.relative(root, target.realpath);
-    //     }
-    //     ~sources.indexOf(target.subpath) || sources.push(target.subpath);
+        if (file.cache) {
+            file.cache.addDeps(target.realpath);
+        }
+        //解决include_path 内import导致subpath为空报错问题
+        if(!target.subpath){
+            target.subpath = path.relative(root, target.realpath);
+        }
+        ~sources.indexOf(target.subpath) || sources.push(target.subpath);
 
-    //     done({
-    //         file: target.subpath,
-    //         contents: content
-    //     });
-    // };
+        return {
+            file: target.subpath,
+            contents: content
+        };
+    };
 
     if (opts.sourceMap) {
 

@@ -1,7 +1,7 @@
 {
   "name": "fis-parser-sass2",
   "description": "A parser plugin for fis to compile sass file.",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "keywords": [
     "fis",
     "sass"
