@@ -25,7 +25,7 @@ var downloadFile = function(file_url, file_path) {
         var cur = 0;
         var info = '';
         //var obj = document.getElementById('js-progress');
-        var total = len / 1048576; //1048576 ¡V bytes in 1Megabyte
+        var total = len / 1048576; //1048576 î“œ bytes in 1Megabyte
         res.on('data', function(chunk) {
             body += chunk;
             cur += chunk.length;
@@ -51,21 +51,18 @@ var downloadFile = function(file_url, file_path) {
 function createDir(dir, callback) {
     dir = path.resolve(dir);
     var originDir = dir;
+
     try {
-        if (!path.isAbsolute(dir)) {
-            dir = path.join(process.cwd(), dir);
-        }
         if (fs.existsSync(dir)) return;
 
-        while (!fs.existsSync(dir + '/..')) { //¼ì²é¸¸Ä¿Â¼ÊÇ·ñ´æÔÚ
+        while (!fs.existsSync(path.join(dir + '/..'))) { 
             dir += '/..';
         }
 
-        while (originDir.length <= dir.length) { //Èç¹ûÄ¿Â¼Ñ­»·´´½¨Íê±Ï£¬ÔòÌø³öÑ­»·
-            fs.mkdirSync(dir, '0777');
+        while (originDir.length <= dir.length) { 
+            fs.mkdirSync(path.resolve(dir), '0777');
             dir = dir.substring(0, dir.length - 3);
         }
-
         if (callback) callback();
     } catch (e) {
         console.log(e);
