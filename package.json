@@ -1,7 +1,7 @@
 {
   "name": "reasy-parser-sass",
   "description": "A parser plugin for reasy to compile sass file.",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "keywords": [
     "fis",
     "sass"
