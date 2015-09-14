@@ -1,0 +1,12 @@
+{
+    "version": 3,
+    "file": "a.css",
+    "sources": [
+        "/a.scss"
+    ],
+    "sourcesContent": [
+        "$enable: true;\n$bgcolor: #d8222d;\n$color: black;\n@if ($enable) {\n    body {\n        background: $bgcolor;\n        color: $color;\n    }\n}"
+    ],
+    "mappings": "AAII,IAAI,CAAC;EACD,UAAU,EAJR,OAAO;EAKT,KAAK,EAJL,KAAK;CAEH",
+    "names": []
+}

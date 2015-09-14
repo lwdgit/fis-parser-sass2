@@ -1,0 +1,6 @@
+@if ($enable) {
+    body {
+        background: $bgcolor;
+        color: $color;
+    }
+}

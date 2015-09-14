@@ -4,6 +4,7 @@
 /.gitignore
 /.tmp
 /debug
+/example
 /binary
 /vendor
 .DS_Store
