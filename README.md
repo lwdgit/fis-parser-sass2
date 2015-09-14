@@ -13,12 +13,29 @@ A parser plugin for reasy to compile sass file.
 
 ```javascript
 //reasy-conf.js
-reasy.match('**.scss', {
-    rExt: '.css', // from .scss to .css
-    parser: fis.plugin('sass')
-}
-
+fis.match('**.scss', {
+    parser: fis.plugin('sass', {
+        define: {
+            'enable': true,
+            '$bgcolor': '#d8222d',
+            'color': 'black'
+        }
+    }),
+    rExt: 'css'
+})
 ```
+
+```scss
+//example a.scss
+@if ($enable) {
+    body {
+        background: $bgcolor;
+        color: $color;
+    }
+}
+```
+
+
 
     $ reasy release -d ./output
 
