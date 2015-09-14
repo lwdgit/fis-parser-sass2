@@ -2,6 +2,7 @@
 /.settings
 /.project
 /.gitignore
+/example
 /test
 /.tmp
 /debug

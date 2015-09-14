@@ -101,14 +101,20 @@ function fixImport(content) {
 
 function handlerDefine(conf) {
     var ret = '';
+    var line = 0;//记录添加了多少行
     if (conf && typeof conf === 'object') {
         for (var c in conf) {
             if (conf.hasOwnProperty(c)) {
-                ret += c + ': ' + conf[c] + ';\n';
+                var key = c.indexOf('$') !== 0 ? '$' + c : c;//如果没有加$,则自动添加
+                ret += key + ': ' + conf[c] + ';\n';
+                line++;
             }
         }
     }
-    return ret;
+    return {
+      scss: ret,
+      line: line
+    }
 }
 
 module.exports = function(content, file, conf) {
@@ -141,7 +147,8 @@ module.exports = function(content, file, conf) {
     });
 
     opts.file = file.origin;
-    opts.data = handlerDefine(opts.define) + content;
+    var scssDefine = handlerDefine(opts.define);
+    opts.data = scssDefine.scss + content;
 
     var includePaths = opts.includePaths;
     var sources = [file.subpath];
@@ -192,7 +199,7 @@ module.exports = function(content, file, conf) {
     try {
         ret = sass.renderSync(opts);
     } catch (e) {
-        fis.log.error(util.format("%s".red + " [`%s` %s:%s]".yellow, e.message, e.file, e.line, e.column));
+        fis.log.error(util.format("%s".red + " [`%s` %s:%s]".yellow, e.message, e.file, e.line - scssDefine.line, e.column));
     }
 
 

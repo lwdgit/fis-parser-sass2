@@ -39,7 +39,7 @@ fis.match('**.scss', {
         define: {
             'enable': true,
             '$bgcolor': '#d8222d',
-            'color': 'black'
+            '$color': 'black'
         }
     }),
     rExt: 'css'
