@@ -147,14 +147,12 @@ module.exports = function(content, file, conf) {
     var scssDefine = handlerDefine(opts.define);
     opts.data = scssDefine.scss + content;
 
+	var stacks = [];
     var includePaths = opts.includePaths;
     var sources = [file.subpath];
     opts.importer = function(url, prev, done) {
         prev = prev.replace(/^\w+\:/, ''); // windows 里面莫名加个盘符。
 
-        if (!prevFile) {
-            throw new Error('Can\'t find `' + prev +'`');
-        }
         var  dirname = path.dirname(prev);
         // 如果已经在里面
         var idx = stacks.indexOf(dirname);
