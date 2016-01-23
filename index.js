@@ -32,10 +32,10 @@ function resolve_and_load(filename, dir) {
     var found = null;
 
     files.every(function(url) {
-        var info = fis.uri(url, dir);
+        var file = fis.util(dir, url);
 
-        if (info.file && info.file.isFile()) {
-            found = info.file;
+        if( file && fis.util.isFile(file)  ) {
+            found = fis.file(file);
             return false;
         }
 
@@ -68,18 +68,15 @@ function fixSourcePath(content, file) {
 
     return content.replace(fis.compile.lang.reg, function(all, type, depth, value) {
 
-        if (parseFloat(fis.version, 10) < 3.0) {
+        // 判断是否为 fis2
+        if (!fis.match) {
             value = depth;
         }
 
         var info = fis.uri(value, file.dirname);
 
-        if (info.file) {
+        if (info.file && info.file.subpath) {
             value = info.quote + info.file.subpath + info.query + info.quote;
-        }
-
-        if (type === 'embed' || type === 'jsEmbed') {
-            value = fis.compile.lang[type].ld + value + fis.compile.lang[type].rd;
         }
 
         return value;
@@ -137,9 +134,9 @@ module.exports = function(content, file, conf) {
     file.dirname !== root && opts.includePaths.unshift(file.dirname);
     opts.includePaths.push(root);
 
-    opts.includePaths = opts.includePaths.map(function(dir) {
+    opts.includePaths = opts.includePaths.map(function( dir ) {
 
-        if (path.resolve(dir) != path.normalize(dir)) {
+        if (path.resolve( dir ) != path.normalize( dir ) || fis.util.exists(path.join(root, dir))) {
             dir = path.join(root, dir);
         }
 
@@ -153,14 +150,20 @@ module.exports = function(content, file, conf) {
     var includePaths = opts.includePaths;
     var sources = [file.subpath];
     opts.importer = function(url, prev, done) {
-        var localPaths = includePaths.concat();
-        var prevFile = find(prev, includePaths);
+        prev = prev.replace(/^\w+\:/, ''); // windows 里面莫名加个盘符。
 
-        if (prevFile) {
-            localPaths.unshift(prevFile.dirname);
+        if (!prevFile) {
+            throw new Error('Can\'t find `' + prev +'`');
         }
+        var  dirname = path.dirname(prev);
+        // 如果已经在里面
+        var idx = stacks.indexOf(dirname);
+        if (~idx) {
+            stacks.splice(idx, 1);
+        }
+        stacks.unshift(dirname);
 
-        var target = find(url, localPaths);
+        var target = find(url, stacks.concat(includePaths, path.join(root, dirname)));
 
         if (!target) {
             throw new Error('Can\'t find `' + url +'` in `' + prev + '`');
@@ -191,8 +194,8 @@ module.exports = function(content, file, conf) {
         mapping.useDomain = true;
         mapping.useHash = false;
 
-        opts.sourceMap = mapping.getUrl(fis.compile.settings.hash,  fis.compile.settings.domain);
-        file.release && (opts.outFile = file.getUrl(fis.compile.settings.hash,  fis.compile.settings.domain));
+        opts.sourceMap = mapping.getUrl(fis.compile.settings.hash, fis.compile.settings.domain);
+        file.release && (opts.outFile = file.getUrl(fis.compile.settings.hash, fis.compile.settings.domain));
     }
 
     var ret;
