@@ -24,6 +24,9 @@ var downloadFile = function(file_url, file_path) {
         var body = '';
         var cur = 0;
         var info = '';
+        if (total < 0.01) {
+          throw new Error('file not exist'); 
+        }
         //var obj = document.getElementById('js-progress');
         var total = len / 1048576; //1048576  bytes in 1Megabyte
         res.on('data', function(chunk) {
