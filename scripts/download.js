@@ -3,10 +3,15 @@ var url = require('url');
 var path = require('path');
 var https = require('https');
 
-var oschina = 'https://git.oschina.net/lwdos/reasy-parser-sass/raw/reasy/binary/';
-var github = 'https://raw.githubusercontent.com/lwdgit/fis-parser-sass2/reasy/binary/';
+var libSassVer = 'v3.4.2';//set libssass version
 
-var file_url = [process.platform, process.arch, process.versions.modules].join('-') /*win32-ia32-11*/ + '_binding.node';
+var downloadPath = {
+	oschina: 'https://git.oschina.net/lwdos/node-sass-installer/raw/master/binary/',
+    github: 'https://raw.githubusercontent.com/lwdgit/node-sass-installer/master/binary/',
+	origin: 'https://github.com/sass/node-sass/releases/download/'
+};
+
+var file_url = [process.platform, process.arch, process.versions.modules].join('-') + '_binding.node';
 var vendorDir = 'node-sass/vendor/' + [process.platform, process.arch, process.versions.modules].join('-');
 var file_path = './' + vendorDir + '/binding.node';
 
@@ -18,17 +23,17 @@ var downloadFile = function(file_url, file_path) {
 
     console.log('start downloading ' + file_url);
     https.get(file_url, function(res) {
-
-        //console.log(res);
         var len = parseInt(res.headers['content-length'], 10);
         var body = '';
         var cur = 0;
         var info = '';
-        if (total < 0.01) {
-          throw new Error('file not exist'); 
-        }
-        //var obj = document.getElementById('js-progress');
-        var total = len / 1048576; //1048576  bytes in 1Megabyte
+
+        var total = len / 1048576; //1048576 bytes in 1Megabyte
+		if (total && total < 0.3) {//mirror file server not exist this file
+			console.log('Mirror file not exists! Auto change mirror to retry!!!');
+			testDownload();
+			return;
+		}
         res.on('data', function(chunk) {
             body += chunk;
             cur += chunk.length;
@@ -44,9 +49,14 @@ var downloadFile = function(file_url, file_path) {
             file.write(chunk);
         }).on('end', function() {
             file.end();
-            console.log('\r\n' + file_name + ' downloaded success!');
+			if (cur < 1000000) {
+				console.log('\r\nYour network may has some problem!!!');
+			} else {
+            	console.log('\r\n' + file_name + ' downloaded success!');
+			}
         }).on('error', function(e) {
-            throw new Error(e);
+            console.log(e.stack || e);
+			testDownload();
         });
     });
 };
@@ -74,9 +84,17 @@ function createDir(dir, callback) {
 
 createDir(vendorDir);
 
-try {
-    downloadFile(oschina + file_url, file_path);
-} catch (e) {
-    console.log('download binding failed! change to github retry!');
-    downloadFile(github + file_url, file_path);
+function testDownload() {
+	var isEmpty = true;
+	for(var path in downloadPath) {
+		var p = downloadPath[path];
+		delete downloadPath[path];
+		downloadFile(p + file_url, file_path);
+		isEmpty = false;
+		break;	
+	}
+	if (isEmpty) {
+		console.log('Download binding.node error!');
+	}
 }
+testDownload();
